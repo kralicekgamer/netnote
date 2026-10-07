@@ -1,0 +1,11 @@
+.gradle/
+.kotlin/
+build/
+local.properties
+.idea/
+*.iml
+
+# Makety obrazovek mají v ukázkových datech skutečné názvy sítí, adresy AP, ID buňky
+# a veřejné IP z testovacího měření. Do repozitáře až po anonymizaci.
+design/obrazovky/
+design-sitovy-denik.zip
