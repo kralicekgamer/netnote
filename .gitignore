@@ -9,3 +9,8 @@ local.properties
 # a veřejné IP z testovacího měření. Do repozitáře až po anonymizaci.
 design/obrazovky/
 design-sitovy-denik.zip
+
+# Podpisový klíč a hesla k němu do repozitáře nepatří.
+keystore.properties
+*.jks
+*.keystore

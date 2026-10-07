@@ -1,4 +1,4 @@
-# Síťový deník – návrh UI (v1)
+# NetNote – návrh UI (v1)
 
 Podklad pro převod testovacího GUI na skutečné obrazovky v Jetpack Compose (Material 3).
 Datová vrstva už je hotová z prototypu – tady jde jen o UI.

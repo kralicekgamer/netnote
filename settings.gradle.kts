@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "netdenik"
+rootProject.name = "netnote"
 include(":app")

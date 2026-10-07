@@ -1,15 +1,35 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
 }
 
+// Podpisový klíč pro vydání. keystore.properties ani samotný klíč nejsou v gitu;
+// bez nich se release sestaví nepodepsaný a ladicí sestavení funguje beze změny.
+val keystoreProperties = Properties().apply {
+    val file = rootProject.file("keystore.properties")
+    if (file.exists()) file.inputStream().use { load(it) }
+}
+
 android {
-    namespace = "cz.netdenik"
+    namespace = "cz.kralicekgamer.netnote"
     compileSdk = 37
 
+    signingConfigs {
+        if (keystoreProperties.containsKey("storeFile")) {
+            create("release") {
+                storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     defaultConfig {
-        applicationId = "cz.netdenik"
+        applicationId = "cz.kralicekgamer.netnote"
         minSdk = 30
         targetSdk = 36
         versionCode = 1
@@ -19,6 +39,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.findByName("release")
         }
     }
 
